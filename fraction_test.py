@@ -25,10 +25,13 @@ class FractionTest(unittest.TestCase):
         # Constructor should provide default denominator = 1
         f = Fraction(99)
         self.assertEqual("99", f.__str__())
+        f = Fraction(-9, 0)
+        self.assertEqual("-inf", f.__str__())
+        f = Fraction(6, 0)
+        self.assertEqual("inf", f.__str__())
+        f = Fraction(0, 0)
+        self.assertEqual("0", f.__str__())
 
-    # TODO Write tests for __init__, __eq__, +, *.
-    # Here is an example, but you must add more test cases.  
-    # The test requires that your __eq__ is correct.
     def test_add(self):
         # 3/4 = 2/3 + 1/12
         self.assertEqual(Fraction(3,4), Fraction(1,12)+Fraction(2,3))
@@ -36,7 +39,10 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(0), Fraction(0, 12) + Fraction(0))
         self.assertEqual(Fraction(1,-2), Fraction(-1, 8) + Fraction(-3, 8))
         self.assertEqual(Fraction(99999999, 555), Fraction(66666666, 555) + Fraction(33333333, 555))
-    #     self.assertEqual(Fraction(1, 0), Fraction(2, 0) + Fraction(3, 0))
+        self.assertEqual(Fraction(10, 0) ,  Fraction(1, 0) + Fraction(7, 6))  #inf == inf + int
+        self.assertEqual(Fraction(0, 1), Fraction(1, 0) + Fraction(-1, 0))   #suppose 0 == inf - inf
+        self.assertEqual(Fraction(-7, 0), Fraction(-13, 0) + Fraction(-2, 0)) #-inf == -inf - inf
+
 
 
     def test_eq(self):
@@ -49,13 +55,17 @@ class FractionTest(unittest.TestCase):
         self.assertFalse(f.__eq__(h))
         #TODO write more tests using other cases.
         i = Fraction(0)
-        j = Fraction(34, 0)
-        k = Fraction(1,0)
-        l = Fraction(-1,0)
-        m = Fraction(0,-1)
-        n = Fraction(-5, 0)
+        j = Fraction(0, -1)
+        k = Fraction(0, 0)
+        l = Fraction(34, 0)
+        m = Fraction(1,0)
+        n = Fraction(-1,0)
         # Consider special values like 0, 1/0, -1/0
-        self.assertFalse(k.__eq__(l))
+        self.assertTrue(i.__eq__(j))
+        self.assertTrue(j.__eq__(k))
+        self.assertTrue(l.__eq__(m))
+        self.assertFalse(m.__eq__(n))
+
 
     def test_mul(self):
         f = Fraction(7,4)
@@ -63,19 +73,29 @@ class FractionTest(unittest.TestCase):
         h = Fraction(3,1)
         i = Fraction(0)
         j = Fraction(4,0)
+        k = Fraction(-16,0)
+        l = Fraction(-1, 0)
+
         self.assertEqual(f, f * g)
         self.assertEqual(i, f * i)
         self.assertEqual(0, g * i)
+        self.assertEqual(l, k * f)
+        self.assertEqual(j, k * l)
+        self.assertEqual(0, i * k)
+        self.assertEqual(0, j * i)
 
     def test_init(self):
         f = Fraction(21, 7)
         g = Fraction(64, -8)
         h = Fraction(0)
         i = Fraction(9, 0)
+        j = Fraction(-4, 0)
+        k = Fraction(6, 0)
         self.assertEqual(3, f.numerator)
         self.assertEqual(1, f.denominator)
         self.assertEqual(1, g.denominator)
         self.assertEqual(7, f.gcd)
         self.assertEqual(8, g.gcd)
-    #     self.assertEqual("", h.gcd)
-    #     self.assertEqual("", i.gcd)
+        self.assertEqual(math.inf, k.numerator)
+        self.assertEqual(-math.inf, j.numerator)
+        self.assertEqual(1, k.denominator)
