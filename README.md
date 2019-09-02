@@ -1,6 +1,6 @@
 ## Unit Testing Assignment
 
-by Bill Gates.
+by Gunn Torcheep.
 
 
 ## Test Cases for unique
