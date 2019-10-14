@@ -75,7 +75,7 @@ class FractionTest(unittest.TestCase):
         j = Fraction(4,0)
         k = Fraction(-16,0)
         l = Fraction(-1, 0)
-
+        
         self.assertEqual(f, f * g)
         self.assertEqual(i, f * i)
         self.assertEqual(0, g * i)
@@ -99,3 +99,6 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(math.inf, k.numerator)
         self.assertEqual(-math.inf, j.numerator)
         self.assertEqual(1, k.denominator)
+
+a= 20
+b = 30
