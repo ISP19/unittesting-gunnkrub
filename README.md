@@ -1,4 +1,5 @@
-## Unit Testing Assignment
+[![Build Status](https://travis-ci.com/gunnkrub/unittesting-gunnkrub.svg?branch=master)](https://travis-ci.com/gunnkrub/unittesting-gunnkrub)## 
+Unit Testing Assignment
 
 by Gunn Torcheep.123git comm
 
