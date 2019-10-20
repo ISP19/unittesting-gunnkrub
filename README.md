@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.com/gunnkrub/unittesting-gunnkrub.svg?branch=master)](https://travis-ci.com/gunnkrub/unittesting-gunnkrub)
 
-.. image:: https://codecov.io/gh/gunnkrub/unittesting-gunnkrub/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/gunnkrub/unittesting-gunnkrub
+[![codecov](https://codecov.io/gh/gunnkrub/unittesting-gunnkrub/branch/master/graph/badge.svg)](https://codecov.io/gh/gunnkrub/unittesting-gunnkrub)
   
 ## Unit Testing Assignment
 
