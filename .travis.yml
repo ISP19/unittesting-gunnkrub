@@ -13,3 +13,5 @@
  # script to run tests. Script can have many commands, one per line.
  script: 
    - python -m unittest discover -p "*_test.py"
+   
+ CODECOV_TOKEN="98227bd9-e7a2-46d7-9eb2-381ad648f397"

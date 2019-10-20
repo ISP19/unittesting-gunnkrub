@@ -43,7 +43,9 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(0, 1), Fraction(1, 0) + Fraction(-1, 0))   #suppose 0 == inf - inf
         self.assertEqual(Fraction(-7, 0), Fraction(-13, 0) + Fraction(-2, 0)) #-inf == -inf - inf
 
-
+        self.assertEqual(Fraction(0, 1), Fraction(-1, 0) + Fraction(1, 0))   #suppose 0 == -inf + inf
+        self.assertEqual(Fraction(1, 0), Fraction(1, 0) + Fraction(1, 0))   #suppose inf == inf + inf
+        self.assertEqual(Fraction(-1, 0), Fraction(1, 1) + Fraction(-1, 0))   #suppose -inf == real num+ -inf
 
     def test_eq(self):
         f = Fraction(1,2)
@@ -53,7 +55,6 @@ class FractionTest(unittest.TestCase):
         self.assertTrue(f.__eq__(g))  # same thing
         self.assertFalse(f == h)
         self.assertFalse(f.__eq__(h))
-        #TODO write more tests using other cases.
         i = Fraction(0)
         j = Fraction(0, -1)
         k = Fraction(0, 0)
@@ -75,6 +76,8 @@ class FractionTest(unittest.TestCase):
         j = Fraction(4,0)
         k = Fraction(-16,0)
         l = Fraction(-1, 0)
+        m = Fraction(1, 0)
+        n = Fraction(-16,2)
         
         self.assertEqual(f, f * g)
         self.assertEqual(i, f * i)
@@ -83,6 +86,12 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(j, k * l)
         self.assertEqual(0, i * k)
         self.assertEqual(0, j * i)
+        self.assertEqual(m, m * m)
+        self.assertEqual(l, l * m)
+        self.assertEqual(l, m * l)
+        self.assertEqual(m, m * f)
+        self.assertEqual(l, m * n)
+        self.assertEqual(m, l * n)
 
     def test_init(self):
         f = Fraction(21, 7)
@@ -102,3 +111,5 @@ class FractionTest(unittest.TestCase):
 
 a= 20
 b = 30
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
